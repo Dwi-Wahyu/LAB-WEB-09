@@ -61,6 +61,18 @@ $koneksi->close();
 
         <h2 class="text-3xl font-bold mb-4">Tambah Pengguna Baru</h2>
 
+<<<<<<< HEAD
+=======
+        <?php
+        if (isset($_GET['error'])) {
+            $error_msg = htmlspecialchars(urldecode($_GET['error']));
+            echo '<div class="mb-4 p-3 bg-red-100 border w-fit border-red-400 text-red-700 rounded-md text-sm">';
+            echo '<strong>Gagal!</strong> ' . $error_msg;            
+            echo '</div>';
+        }
+        ?>
+
+>>>>>>> 67536676be925bb573c250828c0da4aa3d3edff2
         <div class="bg-white p-6 rounded-lg shadow-md max-w-lg">
             
             <form action="proses_user.php?action=tambah" method="POST" id="userForm">

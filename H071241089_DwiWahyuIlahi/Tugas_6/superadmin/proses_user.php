@@ -63,6 +63,7 @@ if ($action == 'tambah') {
         // 'sssi' = String, String, String, Integer
         $stmt->bind_param("sssi", $username, $password_hash, $role, $project_manager_id);
         
+<<<<<<< HEAD
         // 7. Eksekusi
         if ($stmt->execute()) {
             // Jika sukses, redirect kembali ke halaman kelola user
@@ -84,6 +85,42 @@ if ($action == 'tambah') {
         // 8. Tutup statement
         $stmt->close();
         
+=======
+        try {
+            if ($stmt->execute()) {
+                // Jika sukses, redirect kembali ke halaman kelola user
+                $stmt->close();
+                header("location: kelola_user.php?status=sukses_tambah");
+                exit;
+            } 
+            // Jika $stmt->execute() gagal dan tidak melempar exception,
+            // (misalnya karena error koneksi, meskipun jarang terjadi setelah prepare),
+            // kita tetap perlu penanganan:
+            else {
+                $error_message = urlencode("Gagal menambahkan pengguna. Error: " . $stmt->error);
+                $stmt->close();
+                header("location: tambah_user.php?error={$error_message}&username_gagal=" . urlencode($username));
+                exit;
+            }
+        } catch (mysqli_sql_exception $e) {
+            // Blok ini dijalankan jika terjadi EXCEPTION (seperti Duplicate Entry)
+            
+            $stmt->close();
+            
+            // Pengecekan kode error spesifik untuk Duplikat Entri (1062)
+            if ($e->getCode() == 1062) {
+                $error_message = urlencode("Username '{$username}' sudah terdaftar. Silakan gunakan username lain.");
+            } else {
+                // Tangani error database lainnya
+                $error_message = urlencode("Gagal menambahkan pengguna (DB Error): " . $e->getMessage());
+            }
+            
+            // Redirect kembali ke halaman tambah dengan pesan error
+            header("location: tambah_user.php?error={$error_message}&username_gagal=" . urlencode($username));
+            exit;
+        }
+        
+>>>>>>> 67536676be925bb573c250828c0da4aa3d3edff2
     } else {
         // Jika diakses langsung tanpa form
         header("location: tambah_user.php");
