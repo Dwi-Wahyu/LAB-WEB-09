@@ -69,7 +69,6 @@ if (!$result) {
         </div>
 
         <h2 class="text-3xl font-bold mb-4">Kelola Pengguna Sistem</h2>
-<<<<<<< HEAD
 
         <?php
         // ----------------------------------------------------------------
@@ -86,8 +85,6 @@ if (!$result) {
         }
         // ----------------------------------------------------------------
         ?>
-=======
->>>>>>> 67536676be925bb573c250828c0da4aa3d3edff2
         
         <?php
         if (isset($_GET['status'])) {
@@ -122,20 +119,11 @@ if (!$result) {
                 <tbody class="bg-white divide-y divide-gray-200">
                     <?php
                     if ($result->num_rows > 0) {
-<<<<<<< HEAD
-=======
-                        $no = 1;
-
->>>>>>> 67536676be925bb573c250828c0da4aa3d3edff2
                         // Loop data
                         while($row = $result->fetch_assoc()) {
                     ?>
                     <tr>
-<<<<<<< HEAD
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo $row['id']; ?></td>
-=======
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?php echo $no; ?></td>
->>>>>>> 67536676be925bb573c250828c0da4aa3d3edff2
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?php echo htmlspecialchars($row['username']); ?></td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                             <?php 
@@ -171,10 +159,7 @@ if (!$result) {
                         </td>
                     </tr>
                     <?php
-<<<<<<< HEAD
-=======
                     $no++; 
->>>>>>> 67536676be925bb573c250828c0da4aa3d3edff2
                         }
                     } else {
                         // Jika tidak ada data
